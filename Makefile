@@ -1,2 +1,2 @@
-logic: main.c
-	gcc main.c -o ./bin/logic
+logic: interpreter/main.c
+	gcc ./interpreter/main.c -o ./bin/logic
