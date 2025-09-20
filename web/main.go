@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log/slog"
 	"net/http"
 	"os/exec"
 	"strings"
@@ -32,5 +33,7 @@ func main() {
 
 	})
 
-	http.ListenAndServe(":80", router)
+	slog.Info("server starting")
+	err := http.ListenAndServe(":80", router)
+	slog.Error("server crashed", "error", err)
 }
