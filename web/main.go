@@ -14,7 +14,7 @@ func main() {
 	router.Post("/", func(w http.ResponseWriter, r *http.Request) {
 		r.ParseForm()
 		input := r.Form.Get("input")
-		cmd := exec.Command("./bin/logic")
+		cmd := exec.Command("./logic")
 		input = strings.ReplaceAll(input, "∧", "A")
 		input = strings.ReplaceAll(input, "∨", "v")
 		input = strings.ReplaceAll(input, "¬", "~")
@@ -32,5 +32,5 @@ func main() {
 
 	})
 
-	http.ListenAndServe(":8080", router)
+	http.ListenAndServe(":80", router)
 }
