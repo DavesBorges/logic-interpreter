@@ -141,6 +141,7 @@ int performVariableAssignment(char *buffer, int n) {
     return -1;
   }
 
+  printf("%c = %c\n", name, value);
   if (value == 'V') {
     assignVariable(&globalScope, name, 1);
     return 1;
@@ -163,9 +164,19 @@ int main() {
     printf("> ");
     size_t n = getline(&buffer, &limit, stdin);
     if (n == -1) {
-      fprintf(stderr, "failed to read input");
-      exit(-1);
+      // Probably end of input exist silently
+      return 0;
     }
+
+    while(buffer[0] == '\n'){
+      printf("> ");
+      size_t n = getline(&buffer, &limit, stdin);
+      if (n == -1) {
+        // Probably end of input exist silently
+        return 0;
+      }
+    }
+
 
     // Check if there's an assignment operation
     if (strstr(buffer, "=") != NULL) {
@@ -174,6 +185,7 @@ int main() {
         fprintf(stderr, "Invalid variable assignemnt. Variables assignemnt "
                         "have this form: p = V \n");
       }
+
 
       continue;
     }

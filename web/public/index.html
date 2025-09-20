@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Logic interpreter</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/style.css">
 
-
+    <link rel=stylesheet href=https://unpkg.com/missing.css@1.2.0>
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.js"
         integrity="sha384-yWakaGAFicqusuwOYEmoRjLNOC+6OFsdmwC2lbGQaRELtuVEqNzt11c2J711DeCZ"
         crossorigin="anonymous"></script>
@@ -17,6 +17,64 @@
 
 <body>
     <script src="assets/index.js"></script>
+    <main>
+
+        <form hx-post="/" hx-target="#output" hx-swap="outerHTML">
+            <label>fbf:</label>
+            <br />
+            <br />
+            <textarea id="input" name="input" rows="10"></textarea>
+
+            <br />
+            <button type="button" class="key">V</button>
+            <button class="key">F</button>
+            <br />
+
+            <button class="key">¬</button>
+            <button class="key">∧</button>
+            <button class="key">∨</button>
+            <button class="key">(</button>
+            <button class="key">)</button>
+            <button class="key">-></button>
+
+            <br />
+
+            <button class="key">p</button>
+            <button class="key">q</button>
+            <button class="key">r</button>
+            <button class="key">s</button>
+            <button class="key">t</button>
+            <button class="key">=</button>
+
+
+            <script>
+                window.addEventListener('DOMContentLoaded', () => {
+                    document.querySelector('form').addEventListener('submit', () => {
+                        document.querySelector('#output').focus();
+                    })
+                    function handleKeyPressed(keyButton) {
+                        const textContent = keyButton.textContent
+                        document.querySelector('#input').value += textContent + " ";
+                        document.querySelector("#input").focus();
+                    }
+                    document.querySelectorAll('.key').forEach(element => {
+                        element.addEventListener('click', () => handleKeyPressed(element))
+                        element.setAttribute("type", "button")
+                    });
+                }) </script>
+
+            <br />
+            <br />
+            <button type="submit">Executar</button>
+        </form>
+        <div class="output">
+            <label>Output:</label>
+            <br />
+            <br />
+            <textarea id="output" rows="10" disabled></textarea>
+        </div>
+
+    </main>
 </body>
 
 </html>

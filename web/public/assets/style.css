@@ -1,0 +1,63 @@
+main {
+    margin: auto;
+    width: 80%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    height: fit-content;
+    display: flex;
+    align-self: center;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.output textarea:hover {
+    cursor: unset;
+}
+
+form textarea {
+    font-size: xx-large;
+}
+
+.output textarea {
+    font-size: x-large;
+}
+
+.output label {
+    font-size: x-large;
+}
+
+form label {
+    font-size: x-large;
+}
+
+form {
+    margin: 10px auto;
+}
+
+.output {
+    margin: 10px auto;
+}
+
+textarea {
+    line-height: 30px !important;
+}
+
+@media (max-width: 600px) {
+    main {
+        flex-direction: column;
+    }
+}
+
+button.key {
+    font-size: xx-large;
+}
+
+button[type="submit"] {
+    font-size: xx-large;
+}
